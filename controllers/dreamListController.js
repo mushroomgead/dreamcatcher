@@ -4,10 +4,10 @@ const DreamList = mongoose.model('Dreams')
 
 exports.list_all_dreams = function(req, res) {
   DreamList.find({}, function(err, list) {
-      if (err)
-        res.send(err);
-      res.json(list)
-    })
+    if (err)
+      res.send(err);
+    res.json(list)
+  })
 }
 
 exports.create_a_dream = function(req, res) {
@@ -20,7 +20,7 @@ exports.create_a_dream = function(req, res) {
 }
 
 exports.read_a_dream = function(req, res) {
-  
+
   DreamList.findById(req.params.dreamId, function(err, list) {
     if (err)
       res.send(err)
@@ -29,9 +29,9 @@ exports.read_a_dream = function(req, res) {
 }
 
 exports.update_a_dream = function(req, res) {
-  DreamList.fidOneAndUpdate({_id: req.params.dreamId}, req.body, {new: true}, function(err, list) {
+  DreamList.findOneAndUpdate({_id: req.params.dreamId}, req.body, { new: true }, function(err, list) {
     if (err)
-     res.send(err)
+      res.send(err)
     res.json(list)
   })
 }
