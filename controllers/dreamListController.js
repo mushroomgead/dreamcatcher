@@ -39,7 +39,7 @@ exports.update_a_dream = function(req, res) {
 exports.delete_a_dream = function(req, res) {
   DreamList.remove({
     _id: req.params.dreamId
-  }, function(err, list) {
+  }, function(err) {
     if (err)
       res.send(err)
     res.json({ message: 'Dreams list successfully deleted' })
