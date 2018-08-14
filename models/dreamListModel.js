@@ -28,9 +28,5 @@ let DreamSchema = new Schema({
       default: ['public']
     }
 })
-<<<<<<< HEAD
-// comment test
-=======
-// comment
->>>>>>> 45bf78e62f9f031310ebf6a6db0f0032d29229a9
+
 module.exports = mongoose.model('Dreams', DreamSchema)
