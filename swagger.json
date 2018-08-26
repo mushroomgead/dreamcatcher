@@ -1,0 +1,56 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "DreamCatcher API",
+    "description": "DreamCatcher Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/dreams": {
+      "get": {
+        "description": "Create dreams list"
+      },
+      "post": {
+
+      }
+    },
+    "/dreams/{dreamId}": {
+      "get": {
+        "description": "get dreams list by id"
+      },
+      "put": {
+        "description": "update dreams list by id"
+
+      },
+      "delete": {
+        "description": "delete dreams list by id"
+
+      }
+    },
+    "/auth/register": {
+      "post": {
+
+      }
+    },
+    "/auth/login": {
+      "post": {
+
+      }
+    }
+  }
+}
