@@ -12,7 +12,7 @@
   "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "consumes": [
     "application/json"
@@ -23,34 +23,220 @@
   "paths": {
     "/dreams": {
       "get": {
-        "description": "Create dreams list"
+        "summary":"Returns all dreams list",
+        "description": "Returns all dreams list for show in dashboard",
+        "produces":[
+          "application/json"
+        ],
+        "parameters": [],
+        "responses":{
+          "200":{
+            "description":"successful operation",
+            "schema": {
+              "type":"object"
+            }
+          }
+        }
       },
       "post": {
-
+        "summary": "Create dream",
+        "description": "This can only be done by the logged in user.",
+        "produces":[
+          "application/json"
+        ],
+       "parameters": [
+         {
+            "in": "body",
+            "name": "body",
+            "description": "create dream",
+            "require": true,
+            "schema":{
+              "$ref":"#/definitions/Dreams"
+            }
+         }
+       ],
+       "responses":{
+          "default":{
+            "description":"successful operation"
+          }
+        }
       }
     },
     "/dreams/{dreamId}": {
+      "parameters": [
+        {
+          "name": "dreamId",
+          "in": "path",
+          "required": true,
+          "description": "ID of dream that we want to find",
+          "type": "string"
+        }
+      ],
       "get": {
-        "description": "get dreams list by id"
+        "summary":"get dreams list by id",
+        "description": "get dreams list by id",
+        "produces":[
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description":"successful operation",
+            "schema": {
+              "type":"object"
+            }
+          }
+        }
       },
       "put": {
-        "description": "update dreams list by id"
-
+        "summary":"update dreams list by id",
+        "description": "update dreams list by id",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update dream by id",
+            "require": true,
+            "schema": {
+              "$ref": "#/definitions/Dreams"
+            }
+          }
+        ],
+        "responses":{
+          "default":{
+            "description":"successful operation"
+          }
+        }
       },
       "delete": {
-        "description": "delete dreams list by id"
-
+        "summary":"delete dreams list by id",
+        "description": "delete dreams list by id",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update dream by id",
+            "require": true,
+            "schema": {
+              "$ref": "#/definitions/Dreams"
+            }
+          }
+        ],
+        "responses":{
+          "default":{
+            "description":"successful operation"
+          }
+        }
       }
     },
     "/auth/register": {
       "post": {
-
+        "summary":"for user register",
+        "description": "for user register",
+        "produces":[
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "create user in system",
+            "require": true,
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        ],
+        "responses":{
+          "default":{
+            "description":"successful operation"
+          }
+        }
       }
     },
     "/auth/login": {
       "post": {
-
+        "summary":"for user login",
+        "description": "for user login",
+        "produces":[
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "for user login",
+            "require": true,
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "responses":{
+          "default":{
+            "description":"successful operation"
+          }
+        }
       }
     }
-  }
+  },
+    "definitions": {
+      "Dreams": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "authour": {
+            "type": "string"
+          },
+          "checked": {
+            "type": "boolean"
+          },
+          "created_date": {
+            "type": "string"
+          }
+        },
+        "xml":{
+          "name":"Dreams"
+        }
+      },
+      "Users": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          }
+        },
+        "xml":{
+          "name":"Users"
+        }
+      },
+      "Login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "xml":{
+          "name":"Users"
+        }
+      }
+    }
 }

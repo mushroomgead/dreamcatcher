@@ -5,6 +5,7 @@ const Schema = mongoose.Schema
 let UserSchema = new Schema({
   username: {
     type: String,
+    lowercase: true,
     trim: true,
     required: true
   },
@@ -17,12 +18,6 @@ let UserSchema = new Schema({
   },
   hash_password: {
     type: String,
-    required: true
-  },
-  username: {
-    type: String,
-    lowercase: true,
-    trim: true,
     required: true
   },
   created: {
